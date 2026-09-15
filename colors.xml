@@ -1,0 +1,7 @@
+<resources>
+    <color name="nova_bg">#090B12</color>
+    <color name="nova_panel">#101522</color>
+    <color name="nova_cyan">#6EDCFF</color>
+    <color name="nova_purple">#C06CFF</color>
+    <color name="nova_text">#E8F8FF</color>
+</resources>

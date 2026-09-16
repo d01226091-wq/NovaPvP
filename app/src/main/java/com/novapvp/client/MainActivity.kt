@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.serversButton).setOnClickListener {
-            Toast.makeText(this, "Серверы", Toast.LENGTH_SHORT).show()
+            showServers()
         }
 
         findViewById<Button>(R.id.profileButton).setOnClickListener {
@@ -76,19 +76,17 @@ class MainActivity : AppCompatActivity() {
 
         for (world in worlds) {
             val row = LinearLayout(this)
-
             row.orientation = LinearLayout.HORIZONTAL
             row.setPadding(10, 10, 10, 10)
 
             val playButton = Button(this)
+            playButton.text = "$world  ▶"
 
-            playButton.text = "$world   ▶"
             playButton.setOnClickListener {
                 openWorld(world)
             }
 
             val deleteButton = Button(this)
-
             deleteButton.text = "Удалить"
 
             deleteButton.setOnClickListener {
@@ -97,19 +95,12 @@ class MainActivity : AppCompatActivity() {
 
             row.addView(
                 playButton,
-                LinearLayout.LayoutParams(
-                    0,
-                    70,
-                    1f
-                )
+                LinearLayout.LayoutParams(0, 70, 1f)
             )
 
             row.addView(
                 deleteButton,
-                LinearLayout.LayoutParams(
-                    160,
-                    70
-                )
+                LinearLayout.LayoutParams(160, 70)
             )
 
             container.addView(row)
@@ -118,7 +109,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun createWorldDialog() {
         val input = EditText(this)
-
         input.hint = "Название мира"
 
         AlertDialog.Builder(this)
@@ -134,7 +124,6 @@ class MainActivity : AppCompatActivity() {
                         "Введите название мира",
                         Toast.LENGTH_SHORT
                     ).show()
-
                     return@setPositiveButton
                 }
 
@@ -146,7 +135,6 @@ class MainActivity : AppCompatActivity() {
                         "Такой мир уже существует",
                         Toast.LENGTH_SHORT
                     ).show()
-
                     return@setPositiveButton
                 }
 
@@ -168,35 +156,26 @@ class MainActivity : AppCompatActivity() {
     private fun openWorld(name: String) {
         setContentView(R.layout.game_screen)
 
-        findViewById<TextView>(R.id.worldNameText).text = name
+        val worldName = findViewById<TextView>(R.id.worldNameText)
+        worldName.text = name
 
         findViewById<Button>(R.id.backButton).setOnClickListener {
             showWorlds()
         }
-
-        Toast.makeText(
-            this,
-            "Мир \"$name\" запущен",
-            Toast.LENGTH_SHORT
-        ).show()
     }
 
     private fun deleteWorld(name: String) {
         AlertDialog.Builder(this)
             .setTitle("Удалить мир?")
             .setMessage("Удалить \"$name\"?")
-
             .setPositiveButton("УДАЛИТЬ") { _, _ ->
 
                 val worlds = getWorlds().toMutableList()
-
                 worlds.remove(name)
-
                 saveWorlds(worlds)
 
                 showWorlds()
             }
-
             .setNegativeButton("ОТМЕНА", null)
             .show()
     }
@@ -207,20 +186,15 @@ class MainActivity : AppCompatActivity() {
             MODE_PRIVATE
         )
 
-        val data = prefs.getString(
-            "world_list",
-            ""
-        ) ?: ""
+        val data = prefs.getString("world_list", "") ?: ""
 
         if (data.isEmpty()) {
             return emptyList()
         }
 
-        return data
-            .split("|")
-            .filter {
-                it.isNotBlank()
-            }
+        return data.split("|").filter {
+            it.isNotBlank()
+        }
     }
 
     private fun saveWorlds(worlds: List<String>) {
@@ -234,6 +208,14 @@ class MainActivity : AppCompatActivity() {
                 worlds.joinToString("|")
             )
             .apply()
+    }
+
+    private fun showServers() {
+        AlertDialog.Builder(this)
+            .setTitle("Серверы NovaPvP")
+            .setMessage("Серверы пока не подключены.")
+            .setPositiveButton("ОК", null)
+            .show()
     }
 
     private fun showProfile() {
@@ -262,8 +244,8 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
         showMainMenu()
     }
-}h
+}

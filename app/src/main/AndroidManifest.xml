@@ -6,10 +6,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/novapvp_icon"
         android:label="NovaPvP"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.NovaPvP">
+        android:supportsRtl="true">
 
         <activity
             android:name=".MainActivity"

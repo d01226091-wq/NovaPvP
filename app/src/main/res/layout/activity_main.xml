@@ -6,47 +6,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#202020"
-    android:padding="30dp">
+    android:padding="30dp"
+    android:background="#202020">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NovaPvP"
         android:textColor="#FFFFFF"
-        android:textSize="38sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp" />
-
-    <Button
-        android:id="@+id/serversButton"
-        android:layout_width="360dp"
-        android:layout_height="65dp"
-        android:text="СЕРВЕРЫ"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="360dp"
-        android:layout_height="65dp"
-        android:text="ИГРАТЬ"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp" />
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="360dp"
-        android:layout_height="65dp"
-        android:text="НАСТРОЙКИ"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp" />
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NovaPvP 1.0"
         android:textColor="#AAAAAA"
-        android:textSize="15sp"
-        android:layout_marginTop="25dp" />
+        android:textSize="16sp"
+        android:layout_marginBottom="25dp" />
+
+    <Button
+        android:id="@+id/serversButton"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:text="СЕРВЕРЫ" />
+
+    <Button
+        android:id="@+id/worldsButton"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:text="МИРЫ"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:text="НАСТРОЙКИ"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

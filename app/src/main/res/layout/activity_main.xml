@@ -4,15 +4,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/novapvp_background">
+    android:background="#202020">
 
-    <!-- Затемнение фона -->
-    <View
+    <!-- Верхняя панель -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#99000000" />
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:background="#151515">
 
-    <!-- Основное меню -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NovaPvP"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/versionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NovaPvP 1.0"
+            android:textColor="#AAAAAA"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Центральное меню -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,96 +43,79 @@
         android:gravity="center"
         android:padding="24dp">
 
-        <!-- Логотип -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NovaPvP"
+            android:text="ГЛАВНОЕ МЕНЮ"
             android:textColor="#FFFFFF"
-            android:textSize="48sp"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:shadowColor="#000000"
-            android:shadowDx="4"
-            android:shadowDy="4"
-            android:shadowRadius="3"
-            android:layout_marginBottom="4dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Играй • Развивайся • Побеждай"
-            android:textColor="#DDDDDD"
-            android:textSize="16sp"
             android:layout_marginBottom="24dp" />
 
-        <!-- Версия -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NovaPvP 1.0"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginBottom="18dp" />
-
-        <!-- Играть -->
         <Button
             android:id="@+id/playButton"
-            android:layout_width="320dp"
-            android:layout_height="58dp"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
             android:text="ИГРАТЬ"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:backgroundTint="#3F8F3F"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="10dp" />
 
-        <!-- Серверы -->
         <Button
             android:id="@+id/serversButton"
-            android:layout_width="320dp"
-            android:layout_height="58dp"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
             android:text="СЕРВЕРЫ"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#3F8F3F"
-            android:layout_marginBottom="8dp" />
+            android:backgroundTint="#4A4A4A"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Настройки -->
         <Button
             android:id="@+id/settingsButton"
-            android:layout_width="320dp"
-            android:layout_height="58dp"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
             android:text="НАСТРОЙКИ"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#555555"
-            android:layout_marginBottom="8dp" />
+            android:backgroundTint="#4A4A4A"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Профиль -->
         <Button
             android:id="@+id/profileButton"
-            android:layout_width="320dp"
-            android:layout_height="58dp"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
             android:text="ПРОФИЛЬ"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#555555"
-            android:layout_marginBottom="8dp" />
+            android:backgroundTint="#4A4A4A"
+            android:layout_marginBottom="10dp" />
 
-        <!-- Выход -->
         <Button
             android:id="@+id/exitButton"
-            android:layout_width="320dp"
-            android:layout_height="58dp"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
             android:text="ВЫЙТИ"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#444444" />
+            android:backgroundTint="#383838" />
 
     </LinearLayout>
+
+    <!-- Профиль внизу слева -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="20dp"
+        android:text="👤 NovaPlayer"
+        android:textColor="#CCCCCC"
+        android:textSize="15sp" />
 
 </FrameLayout>

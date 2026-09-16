@@ -1,1 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
 
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#202020">
+
+    <!-- Верхняя панель -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:background="#151515">
+
+        <Button
+            android:id="@+id/worldBackButton"
+            android:layout_width="110dp"
+            android:layout_height="52dp"
+            android:text="← НАЗАД"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="МИРЫ"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Список миров -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Мир -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:background="#353535">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NovaPvP World"
+                        android:textColor="#FFFFFF"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Выживание • NovaPvP"
+                        android:textColor="#BBBBBB"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/worldPlayButton"
+                    android:layout_width="130dp"
+                    android:layout_height="55dp"
+                    android:text="ИГРАТЬ" />
+
+            </LinearLayout>
+
+            <!-- Создать мир -->
+
+            <Button
+                android:id="@+id/createWorldButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="+ СОЗДАТЬ НОВЫЙ МИР"
+                android:textSize="17sp" />
+
+            <!-- Импорт -->
+
+            <Button
+                android:id="@+id/importWorldButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:text="📦 ИМПОРТИРОВАТЬ МИР"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

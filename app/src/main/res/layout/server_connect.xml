@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp"
+    android:background="#202020">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ПОДКЛЮЧЕНИЕ"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/serverHost"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:hint="IP сервера"
+        android:singleLine="true"
+        android:textColor="#FFFFFF"
+        android:hintTextColor="#AAAAAA"/>
+
+    <EditText
+        android:id="@+id/serverPort"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:hint="Порт"
+        android:text="19132"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColor="#FFFFFF"
+        android:hintTextColor="#AAAAAA"/>
+
+    <Button
+        android:id="@+id/connectButton"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:text="ПОДКЛЮЧИТЬСЯ"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:text="Введите адрес сервера"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="180dp"
+        android:layout_height="55dp"
+        android:text="НАЗАД"
+        android:layout_marginTop="25dp"/>
+
+</LinearLayout>

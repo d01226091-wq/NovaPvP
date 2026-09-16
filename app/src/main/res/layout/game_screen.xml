@@ -11,19 +11,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Мир"
+        android:text="NovaPvP World"
         android:textColor="#FFFFFF"
-        android:textSize="40sp"
+        android:textSize="38sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="70dp"
-        android:text="Игровой мир NovaPvP"
+        android:layout_marginTop="65dp"
+        android:text="Игровая сцена NovaPvP"
         android:textColor="#BBBBBB"
-        android:textSize="18sp" />
+        android:textSize="17sp" />
 
     <Button
         android:id="@+id/backButton"
@@ -31,6 +31,6 @@
         android:layout_height="60dp"
         android:layout_gravity="bottom|start"
         android:layout_margin="20dp"
-        android:text="← МИРЫ" />
+        android:text="← НАЗАД" />
 
 </FrameLayout>

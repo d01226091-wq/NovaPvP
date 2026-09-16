@@ -48,57 +48,23 @@ class MainActivity : AppCompatActivity() {
     private fun showServers() {
         AlertDialog.Builder(this)
             .setTitle("Серверы NovaPvP")
-            .setMessage(
-                "NovaPvP Network\n\n" +
-                "Статус: Онлайн\n" +
-                "Игроков: 0\n\n" +
-                "Сервер будет доступен после подключения."
-            )
+            .setMessage("Сервер пока не настроен.")
             .setPositiveButton("ОК", null)
             .show()
     }
 
     private fun showSettings() {
-        AlertDialog.Builder(this)
-            .setTitle("Настройки")
-            .setItems(
-                arrayOf(
-                    "Графика",
-                    "Звук",
-                    "Управление",
-                    "Язык"
-                )
-            ) { _, which ->
-                val names = arrayOf(
-                    "Графика",
-                    "Звук",
-                    "Управление",
-                    "Язык"
-                )
-
-                Toast.makeText(
-                    this,
-                    "Выбрано: ${names[which]}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            .setNegativeButton("ЗАКРЫТЬ", null)
-            .show()
+        Toast.makeText(this, "Настройки NovaPvP", Toast.LENGTH_SHORT).show()
     }
 
     private fun showProfile() {
         AlertDialog.Builder(this)
             .setTitle("Профиль")
-            .setMessage(
-                "Игрок: NovaPlayer\n" +
-                "Уровень: 1\n" +
-                "NovaPvP 1.0"
-            )
+            .setMessage("Игрок: NovaPlayer\nNovaPvP 1.0")
             .setPositiveButton("ОК", null)
             .show()
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         showMainMenu()
     }

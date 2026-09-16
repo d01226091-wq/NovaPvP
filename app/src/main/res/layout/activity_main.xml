@@ -1,120 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#202020">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#202020"
+    android:padding="30dp">
 
-    <!-- Верхняя панель -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="28dp"
-        android:paddingEnd="28dp"
-        android:background="#161616">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="NovaPvP"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NovaPvP 1.0"
-            android:textColor="#AAAAAA"
-            android:textSize="15sp" />
-
-    </LinearLayout>
-
-    <!-- Меню -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingTop="70dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ГЛАВНОЕ МЕНЮ"
-            android:textColor="#FFFFFF"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="25dp" />
-
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="360dp"
-            android:layout_height="62dp"
-            android:text="ИГРАТЬ"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:backgroundTint="#3F8F3F"
-            android:layout_marginBottom="10dp" />
-
-        <Button
-            android:id="@+id/serversButton"
-            android:layout_width="360dp"
-            android:layout_height="62dp"
-            android:text="СЕРВЕРЫ"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:backgroundTint="#4A4A4A"
-            android:layout_marginBottom="10dp" />
-
-        <Button
-            android:id="@+id/profileButton"
-            android:layout_width="360dp"
-            android:layout_height="62dp"
-            android:text="ПРОФИЛЬ"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:backgroundTint="#4A4A4A"
-            android:layout_marginBottom="10dp" />
-
-        <Button
-            android:id="@+id/settingsButton"
-            android:layout_width="360dp"
-            android:layout_height="62dp"
-            android:text="НАСТРОЙКИ"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:backgroundTint="#4A4A4A"
-            android:layout_marginBottom="10dp" />
-
-        <Button
-            android:id="@+id/exitButton"
-            android:layout_width="360dp"
-            android:layout_height="62dp"
-            android:text="ВЫЙТИ"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:backgroundTint="#383838" />
-
-    </LinearLayout>
-
-    <!-- Игрок -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_margin="20dp"
-        android:text="NovaPlayer"
-        android:textColor="#CCCCCC"
-        android:textSize="15sp" />
+        android:text="NovaPvP"
+        android:textColor="#FFFFFF"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/serversButton"
+        android:layout_width="360dp"
+        android:layout_height="65dp"
+        android:text="СЕРВЕРЫ"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="360dp"
+        android:layout_height="65dp"
+        android:text="ИГРАТЬ"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="360dp"
+        android:layout_height="65dp"
+        android:text="НАСТРОЙКИ"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NovaPvP 1.0"
+        android:textColor="#AAAAAA"
+        android:textSize="15sp"
+        android:layout_marginTop="25dp" />
+
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.novapvp.client
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -11,43 +10,38 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        showMainMenu()
+    }
+
+    private fun showMainMenu() {
         setContentView(R.layout.activity_main)
 
-        val playButton = findViewById<Button>(R.id.playButton)
-        val serversButton = findViewById<Button>(R.id.serversButton)
-        val settingsButton = findViewById<Button>(R.id.settingsButton)
-        val exitButton = findViewById<Button>(R.id.exitButton)
-
-        playButton.setOnClickListener {
-            openMinecraft()
+        findViewById<Button>(R.id.playButton).setOnClickListener {
+            showGameScreen()
         }
 
-        serversButton.setOnClickListener {
+        findViewById<Button>(R.id.serversButton).setOnClickListener {
             showServers()
         }
 
-        settingsButton.setOnClickListener {
+        findViewById<Button>(R.id.settingsButton).setOnClickListener {
             showSettings()
         }
 
-        exitButton.setOnClickListener {
+        findViewById<Button>(R.id.profileButton).setOnClickListener {
+            showProfile()
+        }
+
+        findViewById<Button>(R.id.exitButton).setOnClickListener {
             finish()
         }
     }
 
-    private fun openMinecraft() {
-        val minecraftPackage = "com.mojang.minecraftpe"
+    private fun showGameScreen() {
+        setContentView(R.layout.game_screen)
 
-        val intent = packageManager.getLaunchIntentForPackage(minecraftPackage)
-
-        if (intent != null) {
-            startActivity(intent)
-        } else {
-            Toast.makeText(
-                this,
-                "Minecraft Bedrock не установлен",
-                Toast.LENGTH_LONG
-            ).show()
+        findViewById<Button>(R.id.backButton).setOnClickListener {
+            showMainMenu()
         }
     }
 
@@ -55,18 +49,18 @@ class MainActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Серверы NovaPvP")
             .setMessage(
-                "NovaPvP Server\n\n" +
+                "NovaPvP Network\n\n" +
                 "Статус: Онлайн\n" +
                 "Игроков: 0\n\n" +
-                "Сервер пока не настроен."
+                "Сервер будет доступен после подключения."
             )
-            .setPositiveButton("ЗАКРЫТЬ", null)
+            .setPositiveButton("ОК", null)
             .show()
     }
 
     private fun showSettings() {
         AlertDialog.Builder(this)
-            .setTitle("Настройки NovaPvP")
+            .setTitle("Настройки")
             .setItems(
                 arrayOf(
                     "Графика",
@@ -75,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                     "Язык"
                 )
             ) { _, which ->
-                val items = arrayOf(
+                val names = arrayOf(
                     "Графика",
                     "Звук",
                     "Управление",
@@ -84,11 +78,28 @@ class MainActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Выбрано: ${items[which]}",
+                    "Выбрано: ${names[which]}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
             .setNegativeButton("ЗАКРЫТЬ", null)
             .show()
+    }
+
+    private fun showProfile() {
+        AlertDialog.Builder(this)
+            .setTitle("Профиль")
+            .setMessage(
+                "Игрок: NovaPlayer\n" +
+                "Уровень: 1\n" +
+                "NovaPvP 1.0"
+            )
+            .setPositiveButton("ОК", null)
+            .show()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        showMainMenu()
     }
 }

@@ -5,115 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="24dp"
     android:background="#202020">
 
-    <!-- Верхняя панель -->
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:text="← НАЗАД" />
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="МИРЫ"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp" />
+
+    <Button
+        android:id="@+id/playWorldButton"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:background="#151515">
+        android:layout_height="65dp"
+        android:text="NovaPvP World    ▶ ИГРАТЬ"
+        android:textSize="17sp" />
 
-        <Button
-            android:id="@+id/worldBackButton"
-            android:layout_width="110dp"
-            android:layout_height="52dp"
-            android:text="← НАЗАД"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="МИРЫ"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <!-- Список миров -->
-
-    <ScrollView
+    <Button
+        android:id="@+id/createWorldButton"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="65dp"
+        android:text="+ СОЗДАТЬ НОВЫЙ МИР"
+        android:textSize="17sp"
+        android:layout_marginTop="12dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
-
-            <!-- Мир -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="16dp"
-                android:background="#353535">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="NovaPvP World"
-                        android:textColor="#FFFFFF"
-                        android:textSize="21sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Выживание • NovaPvP"
-                        android:textColor="#BBBBBB"
-                        android:textSize="14sp"
-                        android:layout_marginTop="5dp" />
-
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/worldPlayButton"
-                    android:layout_width="130dp"
-                    android:layout_height="55dp"
-                    android:text="ИГРАТЬ" />
-
-            </LinearLayout>
-
-            <!-- Создать мир -->
-
-            <Button
-                android:id="@+id/createWorldButton"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:text="+ СОЗДАТЬ НОВЫЙ МИР"
-                android:textSize="17sp" />
-
-            <!-- Импорт -->
-
-            <Button
-                android:id="@+id/importWorldButton"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                android:text="📦 ИМПОРТИРОВАТЬ МИР"
-                android:textSize="17sp" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    <Button
+        android:id="@+id/importWorldButton"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:text="📦 ИМПОРТИРОВАТЬ МИР"
+        android:textSize="17sp"
+        android:layout_marginTop="12dp" />
 
 </LinearLayout>

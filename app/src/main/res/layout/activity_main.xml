@@ -1,68 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#202020">
+    android:background="@drawable/novapvp_background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NovaPvP"
-        android:textColor="#FFFFFF"
-        android:textSize="42sp"
-        android:textStyle="bold"
-        android:shadowColor="#000000"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="2"
-        android:layout_marginBottom="45dp" />
+    <!-- Затемнение фона -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000" />
 
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="320dp"
-        android:layout_height="64dp"
-        android:text="ИГРАТЬ"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#3F8F3F"
-        android:layout_marginBottom="12dp" />
+    <!-- Основное меню -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
 
-    <Button
-        android:id="@+id/serversButton"
-        android:layout_width="320dp"
-        android:layout_height="64dp"
-        android:text="СЕРВЕРЫ"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#3F8F3F"
-        android:layout_marginBottom="12dp" />
+        <!-- Логотип -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NovaPvP"
+            android:textColor="#FFFFFF"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="3"
+            android:layout_marginBottom="4dp" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="320dp"
-        android:layout_height="64dp"
-        android:text="НАСТРОЙКИ"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#555555"
-        android:layout_marginBottom="12dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Играй • Развивайся • Побеждай"
+            android:textColor="#DDDDDD"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp" />
 
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="320dp"
-        android:layout_height="64dp"
-        android:text="ВЫЙТИ"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#555555" />
+        <!-- Версия -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NovaPvP 1.0"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginBottom="18dp" />
 
-</LinearLayout>
+        <!-- Играть -->
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:text="ИГРАТЬ"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#3F8F3F"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Серверы -->
+        <Button
+            android:id="@+id/serversButton"
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:text="СЕРВЕРЫ"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#3F8F3F"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Настройки -->
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:text="НАСТРОЙКИ"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Профиль -->
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:text="ПРОФИЛЬ"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Выход -->
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:text="ВЫЙТИ"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#444444" />
+
+    </LinearLayout>
+
+</FrameLayout>

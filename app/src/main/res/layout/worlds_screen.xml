@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#202020"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="#202020">
 
     <Button
         android:id="@+id/backButton"
@@ -22,16 +22,13 @@
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp" />
+        android:layout_margin="20dp" />
 
     <Button
         android:id="@+id/createWorldButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="+ СОЗДАТЬ НОВЫЙ МИР"
-        android:textSize="17sp"
-        android:layout_marginBottom="15dp" />
+        android:text="+ СОЗДАТЬ НОВЫЙ МИР" />
 
     <ScrollView
         android:layout_width="match_parent"

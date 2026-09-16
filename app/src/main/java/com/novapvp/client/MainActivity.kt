@@ -1,3 +1,4 @@
+
 package com.novapvp.client
 
 import android.os.Bundle
@@ -58,11 +59,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateWorldList() {
         val container = findViewById<LinearLayout>(R.id.worldList)
+
         container.removeAllViews()
 
         val worlds = getWorlds()
 
         if (worlds.isEmpty()) {
+
             val emptyText = TextView(this)
 
             emptyText.text = "Миров пока нет\nСоздай свой первый мир!"
@@ -71,15 +74,19 @@ class MainActivity : AppCompatActivity() {
             emptyText.setPadding(20, 40, 20, 40)
 
             container.addView(emptyText)
+
             return
         }
 
         for (world in worlds) {
+
             val row = LinearLayout(this)
+
             row.orientation = LinearLayout.HORIZONTAL
             row.setPadding(10, 10, 10, 10)
 
             val playButton = Button(this)
+
             playButton.text = "$world  ▶"
 
             playButton.setOnClickListener {
@@ -87,6 +94,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             val deleteButton = Button(this)
+
             deleteButton.text = "Удалить"
 
             deleteButton.setOnClickListener {
@@ -95,12 +103,19 @@ class MainActivity : AppCompatActivity() {
 
             row.addView(
                 playButton,
-                LinearLayout.LayoutParams(0, 70, 1f)
+                LinearLayout.LayoutParams(
+                    0,
+                    70,
+                    1f
+                )
             )
 
             row.addView(
                 deleteButton,
-                LinearLayout.LayoutParams(160, 70)
+                LinearLayout.LayoutParams(
+                    160,
+                    70
+                )
             )
 
             container.addView(row)
@@ -108,37 +123,45 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createWorldDialog() {
+
         val input = EditText(this)
+
         input.hint = "Название мира"
 
         AlertDialog.Builder(this)
             .setTitle("Создать мир")
             .setView(input)
+
             .setPositiveButton("СОЗДАТЬ") { _, _ ->
 
                 val name = input.text.toString().trim()
 
                 if (name.isEmpty()) {
+
                     Toast.makeText(
                         this,
                         "Введите название мира",
                         Toast.LENGTH_SHORT
                     ).show()
+
                     return@setPositiveButton
                 }
 
                 val worlds = getWorlds().toMutableList()
 
                 if (worlds.contains(name)) {
+
                     Toast.makeText(
                         this,
                         "Такой мир уже существует",
                         Toast.LENGTH_SHORT
                     ).show()
+
                     return@setPositiveButton
                 }
 
                 worlds.add(name)
+
                 saveWorlds(worlds)
 
                 Toast.makeText(
@@ -149,55 +172,74 @@ class MainActivity : AppCompatActivity() {
 
                 showWorlds()
             }
-            .setNegativeButton("ОТМЕНА", null)
+
+            .setNegativeButton(
+                "ОТМЕНА",
+                null
+            )
+
             .show()
     }
 
     private fun openWorld(name: String) {
-        setContentView(R.layout.game_screen)
 
-        val worldName = findViewById<TextView>(R.id.worldNameText)
-        worldName.text = name
+        val gameView = GameView(this)
 
-        findViewById<Button>(R.id.backButton).setOnClickListener {
-            showWorlds()
-        }
+        setContentView(gameView)
     }
 
     private fun deleteWorld(name: String) {
+
         AlertDialog.Builder(this)
             .setTitle("Удалить мир?")
             .setMessage("Удалить \"$name\"?")
+
             .setPositiveButton("УДАЛИТЬ") { _, _ ->
 
                 val worlds = getWorlds().toMutableList()
+
                 worlds.remove(name)
+
                 saveWorlds(worlds)
 
                 showWorlds()
             }
-            .setNegativeButton("ОТМЕНА", null)
+
+            .setNegativeButton(
+                "ОТМЕНА",
+                null
+            )
+
             .show()
     }
 
     private fun getWorlds(): List<String> {
+
         val prefs = getSharedPreferences(
             prefsName,
             MODE_PRIVATE
         )
 
-        val data = prefs.getString("world_list", "") ?: ""
+        val data = prefs.getString(
+            "world_list",
+            ""
+        ) ?: ""
 
         if (data.isEmpty()) {
             return emptyList()
         }
 
-        return data.split("|").filter {
-            it.isNotBlank()
-        }
+        return data
+            .split("|")
+            .filter {
+                it.isNotBlank()
+            }
     }
 
-    private fun saveWorlds(worlds: List<String>) {
+    private fun saveWorlds(
+        worlds: List<String>
+    ) {
+
         getSharedPreferences(
             prefsName,
             MODE_PRIVATE
@@ -211,14 +253,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showServers() {
+
         AlertDialog.Builder(this)
             .setTitle("Серверы NovaPvP")
-            .setMessage("Серверы пока не подключены.")
-            .setPositiveButton("ОК", null)
+            .setMessage(
+                "NovaPvP Network\n\n" +
+                "Статус: пока не подключен"
+            )
+            .setPositiveButton(
+                "ОК",
+                null
+            )
             .show()
     }
 
     private fun showProfile() {
+
         AlertDialog.Builder(this)
             .setTitle("Профиль")
             .setMessage(
@@ -226,25 +276,51 @@ class MainActivity : AppCompatActivity() {
                 "Уровень: 1\n" +
                 "NovaPvP 1.0"
             )
-            .setPositiveButton("ОК", null)
+            .setPositiveButton(
+                "ОК",
+                null
+            )
             .show()
     }
 
     private fun showSettings() {
+
         AlertDialog.Builder(this)
             .setTitle("Настройки")
-            .setMessage(
-                "Видео\n" +
-                "Аудио\n" +
-                "Управление\n" +
-                "Интерфейс\n" +
-                "Язык"
+            .setItems(
+                arrayOf(
+                    "Видео",
+                    "Аудио",
+                    "Управление",
+                    "Интерфейс",
+                    "Язык"
+                )
+            ) { _, which ->
+
+                val names = arrayOf(
+                    "Видео",
+                    "Аудио",
+                    "Управление",
+                    "Интерфейс",
+                    "Язык"
+                )
+
+                Toast.makeText(
+                    this,
+                    "Выбрано: ${names[which]}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            .setNegativeButton(
+                "ЗАКРЫТЬ",
+                null
             )
-            .setPositiveButton("ОК", null)
+
             .show()
     }
 
-    @Suppress("DEPRECATION")
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         showMainMenu()
     }

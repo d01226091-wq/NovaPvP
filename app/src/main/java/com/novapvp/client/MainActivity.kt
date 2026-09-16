@@ -1,19 +1,19 @@
-
 package com.novapvp.client
 
+import android.app.Activity
 import android.os.Bundle
+import android.graphics.Color
+import android.view.Gravity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import java.net.DatagramPacket
+import java.net.DatagramSocket
+import java.net.InetAddress
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,19 +25,28 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.serversButton).setOnClickListener {
-            showServerDialog()
+        val serversButton =
+            findViewById<Button>(R.id.serversButton)
+
+        val worldsButton =
+            findViewById<Button>(R.id.worldsButton)
+
+        val settingsButton =
+            findViewById<Button>(R.id.settingsButton)
+
+        serversButton.setOnClickListener {
+            showServerScreen()
         }
 
-        findViewById<Button>(R.id.playButton).setOnClickListener {
+        worldsButton.setOnClickListener {
             Toast.makeText(
                 this,
-                "Игровой режим NovaPvP пока разрабатывается",
+                "Раздел миров пока в разработке",
                 Toast.LENGTH_SHORT
             ).show()
         }
 
-        findViewById<Button>(R.id.settingsButton).setOnClickListener {
+        settingsButton.setOnClickListener {
             Toast.makeText(
                 this,
                 "Настройки NovaPvP",
@@ -46,171 +55,185 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showServerDialog() {
+    private fun showServerScreen() {
 
-        val layout = LinearLayout(this)
+        val root = LinearLayout(this)
 
-        layout.orientation = LinearLayout.VERTICAL
-        layout.setPadding(40, 10, 40, 10)
+        root.orientation = LinearLayout.VERTICAL
+        root.gravity = Gravity.CENTER
+        root.setPadding(30, 20, 30, 20)
+        root.setBackgroundColor(Color.rgb(32, 32, 32))
 
-        val hostInput = EditText(this)
+        val title = TextView(this)
 
-        hostInput.hint = "IP сервера"
-        hostInput.singleLine = true
+        title.text = "СЕРВЕРЫ"
+        title.textSize = 32f
+        title.setTextColor(Color.WHITE)
+        title.gravity = Gravity.CENTER
 
-        val portInput = EditText(this)
+        root.addView(title)
 
-        portInput.hint = "Порт"
-        portInput.setText("19132")
-        portInput.inputType = 2
-        portInput.singleLine = true
+        val ip = EditText(this)
+
+        ip.hint = "IP сервера"
+        ip.setTextColor(Color.WHITE)
+        ip.setHintTextColor(Color.LTGRAY)
+        ip.singleLine = true
+
+        val ipParams = LinearLayout.LayoutParams(
+            400,
+            60
+        )
+
+        ipParams.topMargin = 25
+
+        root.addView(ip, ipParams)
+
+        val port = EditText(this)
+
+        port.hint = "Порт"
+        port.setText("19132")
+        port.setTextColor(Color.WHITE)
+        port.setHintTextColor(Color.LTGRAY)
+        port.inputType = 2
+        port.singleLine = true
+
+        val portParams = LinearLayout.LayoutParams(
+            400,
+            60
+        )
+
+        portParams.topMargin = 10
+
+        root.addView(port, portParams)
+
+        val connect = Button(this)
+
+        connect.text = "ПОДКЛЮЧИТЬСЯ"
+
+        val connectParams = LinearLayout.LayoutParams(
+            400,
+            60
+        )
+
+        connectParams.topMargin = 15
+
+        root.addView(connect, connectParams)
 
         val status = TextView(this)
 
-        status.text = "Введите адрес Bedrock-сервера"
-        status.setPadding(0, 25, 0, 10)
+        status.text = "Введите IP и порт"
+        status.textSize = 16f
+        status.setTextColor(Color.WHITE)
+        status.gravity = Gravity.CENTER
 
-        layout.addView(hostInput)
-        layout.addView(portInput)
-        layout.addView(status)
+        val statusParams = LinearLayout.LayoutParams(
+            400,
+            80
+        )
 
-        val dialog = AlertDialog.Builder(this)
-            .setTitle("Сервер Bedrock")
-            .setView(layout)
-            .setNegativeButton("НАЗАД", null)
-            .setPositiveButton("ПРОВЕРИТЬ", null)
-            .create()
+        root.addView(status, statusParams)
 
-        dialog.setOnShowListener {
+        val back = Button(this)
 
-            dialog.getButton(
-                AlertDialog.BUTTON_POSITIVE
-            ).setOnClickListener {
+        back.text = "НАЗАД"
 
-                val host = hostInput.text.toString().trim()
+        root.addView(back)
 
-                val port = portInput.text
-                    .toString()
-                    .toIntOrNull()
+        setContentView(root)
 
-                if (host.isEmpty()) {
-
-                    status.text = "Введите IP сервера"
-                    return@setOnClickListener
-                }
-
-                if (port == null || port !in 1..65535) {
-
-                    status.text = "Неверный порт"
-                    return@setOnClickListener
-                }
-
-                status.text = "Проверяем соединение..."
-
-                dialog.getButton(
-                    AlertDialog.BUTTON_POSITIVE
-                ).isEnabled = false
-
-                CoroutineScope(
-                    Dispatchers.Main
-                ).launch {
-
-                    val result = checkBedrockServer(
-                        host,
-                        port
-                    )
-
-                    status.text = result
-
-                    dialog.getButton(
-                        AlertDialog.BUTTON_POSITIVE
-                    ).isEnabled = true
-                }
-            }
+        back.setOnClickListener {
+            showMainMenu()
         }
 
-        dialog.show()
+        connect.setOnClickListener {
+
+            val host = ip.text.toString().trim()
+
+            val portNumber =
+                port.text.toString().toIntOrNull()
+
+            if (host.isEmpty()) {
+
+                status.text = "Введите IP сервера"
+                return@setOnClickListener
+            }
+
+            if (
+                portNumber == null ||
+                portNumber < 1 ||
+                portNumber > 65535
+            ) {
+
+                status.text = "Неверный порт"
+                return@setOnClickListener
+            }
+
+            status.text = "Проверяем сервер..."
+
+            connect.isEnabled = false
+
+            Thread {
+
+                val result =
+                    checkServer(host, portNumber)
+
+                runOnUiThread {
+
+                    status.text = result
+                    connect.isEnabled = true
+                }
+
+            }.start()
+        }
     }
 
-    private suspend fun checkBedrockServer(
+    private fun checkServer(
         host: String,
         port: Int
     ): String {
 
-        return kotlinx.coroutines.withContext(
-            Dispatchers.IO
-        ) {
+        return try {
 
-            try {
+            val address =
+                InetAddress.getByName(host)
 
-                val address =
-                    java.net.InetAddress.getByName(host)
+            DatagramSocket().use { socket ->
 
-                java.net.DatagramSocket().use { socket ->
+                socket.soTimeout = 3000
 
-                    socket.soTimeout = 3000
+                val data = ByteArray(25)
 
-                    val data = byteArrayOf(
-                        0x01,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00,
-                        0x00
+                data[0] = 0x01
+
+                val packet =
+                    DatagramPacket(
+                        data,
+                        data.size,
+                        address,
+                        port
                     )
 
-                    val packet =
-                        java.net.DatagramPacket(
-                            data,
-                            data.size,
-                            address,
-                            port
-                        )
+                socket.send(packet)
 
-                    socket.send(packet)
+                val responseData =
+                    ByteArray(2048)
 
-                    val responseData =
-                        ByteArray(2048)
+                val response =
+                    DatagramPacket(
+                        responseData,
+                        responseData.size
+                    )
 
-                    val response =
-                        java.net.DatagramPacket(
-                            responseData,
-                            responseData.size
-                        )
+                socket.receive(response)
 
-                    socket.receive(response)
+                "Сервер отвечает!"
 
-                    "Сервер отвечает!\n" +
-                            "${address.hostAddress}:$port"
-                }
-
-            } catch (e: java.net.SocketTimeoutException) {
-
-                "Сервер не ответил за 3 секунды"
-
-            } catch (e: Exception) {
-
-                "Ошибка: ${e.message ?: "неизвестная ошибка"}"
             }
+
+        } catch (e: Exception) {
+
+            "Сервер не ответил"
         }
     }
 }

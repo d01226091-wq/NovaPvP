@@ -5,47 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#202020">
+    android:background="#202020"
+    android:padding="24dp">
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="55dp"
         android:text="← НАЗАД" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="МИРЫ"
         android:textColor="#FFFFFF"
-        android:textSize="32sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="25dp" />
-
-    <Button
-        android:id="@+id/playWorldButton"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:text="NovaPvP World    ▶ ИГРАТЬ"
-        android:textSize="17sp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:id="@+id/createWorldButton"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:text="+ СОЗДАТЬ НОВЫЙ МИР"
         android:textSize="17sp"
-        android:layout_marginTop="12dp" />
+        android:layout_marginBottom="15dp" />
 
-    <Button
-        android:id="@+id/importWorldButton"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:text="📦 ИМПОРТИРОВАТЬ МИР"
-        android:textSize="17sp"
-        android:layout_marginTop="12dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/worldList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </ScrollView>
 
 </LinearLayout>

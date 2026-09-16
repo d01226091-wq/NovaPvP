@@ -1,1 +1,44 @@
 
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NovaPvP"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="40dp" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:text="ИГРАТЬ" />
+
+    <Button
+        android:id="@+id/serversButton"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:text="СЕРВЕРЫ" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:text="НАСТРОЙКИ" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:text="ВЫЙТИ" />
+
+</LinearLayout>

@@ -5,12 +5,14 @@ plugins {
 
 android {
     namespace = "com.novapvp.client"
+
     compileSdk = 35
 
     defaultConfig {
         applicationId = "com.novapvp.client"
         minSdk = 24
         targetSdk = 35
+
         versionCode = 1
         versionName = "1.0"
     }
@@ -28,4 +30,5 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 }
